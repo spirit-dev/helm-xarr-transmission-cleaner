@@ -45,9 +45,12 @@ env:
   # Discord webhook token linked to the channel
   - name: TC_DISCORD_TOKEN
     value:
-  # Max duration for a torrent to remain seeding in tbt
-  - name: TC_EXPIRES_AFTER_WEEKS
-    value: "8"
+  # Max duration for a torrent to remain seeding in tbt ( in days)
+  - name: TC_EXPIRES_AFTER_DAYS
+    value: "42"
+  # Max duration for a public torrent to remain seeding in tbt ( in days)
+  - name: TC_EXPIRES_PUBLIC_AFTER_DAYS
+    value: "3"
 
 volumes:
   - name: source-folder
