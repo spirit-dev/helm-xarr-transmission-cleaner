@@ -1,0 +1,95 @@
+fullnameOverride: transmission-cleaner
+
+job:
+  schedule: "0 * * * *"
+
+annotations: {}
+
+additionalLabels:
+  {}
+  # lbl-key: lbl-value
+
+image:
+  repository: gitlab-registry-internal.spirit-dev.net/scripts/transmission-cleaner
+  tag: latest
+  pullPolicy: IfNotPresent
+
+env:
+  # default mount point
+  - name: TC_SOURCE_FOLDER
+    value: /code/source_folder/configs/transmission-home/torrents
+  # Used for logging json format output
+  - name: TC_ENVIRONMENT
+    value: production
+  # Transmission protocol (http|https)
+  - name: TC_TRANSMISSION_PROT
+    value: http
+  # Transmission host name. Equiv to the service name
+  - name: TC_TRANSMISSION_HOST
+    value: transmission.transmission
+  # Transmission url. default: transmission/rpc
+  - name: TC_TRANSMISSION_URL
+    value: transmission/rpc
+  # Transmission username
+  - name: TC_TRANSMISSION_USER
+    value:
+  # Transmission password
+  - name: TC_TRANSMISSION_PASS
+    value:
+  # Dry run the execution of the transmission requests
+  - name: TC_DRY_RUN
+    value: "false"
+  # Discord channel where to send data
+  - name: TC_DISCORD_CHANNEL
+    value:
+  # Discord webhook token linked to the channel
+  - name: TC_DISCORD_TOKEN
+    value:
+  # Max duration for a torrent to remain seeding in tbt ( in days)
+  - name: TC_EXPIRES_AFTER_DAYS
+    value: "42"
+  # Max duration for a public torrent to remain seeding in tbt ( in days)
+  - name: TC_EXPIRES_PUBLIC_AFTER_DAYS
+    value: "3"
+
+volumes:
+  - name: source-folder
+    persistentVolumeClaim:
+      claimName: source-folder
+
+volumeMounts:
+  - name: source-folder
+    mountPath: "/code/source_folder"
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+# Security context for container
+securityContext: {}
+
+# Security context for pod
+# Can be used to allow ipv6 for openvpn, because
+# some VPN providers push an ipv6 route with will fail without
+# ipv6 support, see https://github.com/haugene/docker-transmission-openvpn/issues/789
+# Note that your kubelet needs to allow changing this sysctl setting, see
+# https://kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/#enabling-unsafe-sysctls
+#
+# - podSecurityContext:
+#     sysctls:
+#       - name: net.ipv6.conf.all.disable_ipv6
+#         value: "0"
+podSecurityContext: {}
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
