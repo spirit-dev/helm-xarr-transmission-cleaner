@@ -7,12 +7,13 @@ metadata:
   labels:
     {{- include "transmission-cleaner.labels" . | nindent 4 }}
     grafana_dashboard: "1"
-  {{- with .Values.annotations }}
   annotations:
-    {{- range $key, $value := . }}
-    {{ $key }}: {{ $value | quote }}
+    grafana_dashboard_folder: "/tmp/dashboards/applicative"
+    {{- with .Values.annotations }}
+      {{- range $key, $value := . }}
+      {{ $key }}: {{ $value | quote }}
+      {{- end }}
     {{- end }}
-  {{- end }}
 data:
   transmission-cleaner.json: |-
     {
@@ -707,7 +708,7 @@ data:
       "time": { "from": "now-7d", "to": "now" },
       "timepicker": {},
       "timezone": "browser",
-      "title": "Applicative / Torrents dashboard",
+      "title": "Torrents dashboard",
       "uid": "feki3juk68hdse",
       "version": 18,
       "weekStart": ""
