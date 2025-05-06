@@ -12,6 +12,7 @@ metadata:
     {{- range $key, $value := . }}
     {{ $key }}: {{ $value | quote }}
     {{- end }}
+    grafana_dashboard_folder: "/tmp/dashboards/applicative"
   {{- end }}
 data:
   transmission-cleaner.json: |-
