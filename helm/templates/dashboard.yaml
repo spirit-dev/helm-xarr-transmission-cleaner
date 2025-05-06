@@ -8,7 +8,7 @@ metadata:
     {{- include "transmission-cleaner.labels" . | nindent 4 }}
     grafana_dashboard: "1"
   annotations:
-    grafana_dashboard_folder: "/tmp/dashboards/Applicative"
+    grafana_dashboard_folder: "Applicative"
     {{- with .Values.annotations }}
       {{- range $key, $value := . }}
       {{ $key }}: {{ $value | quote }}
