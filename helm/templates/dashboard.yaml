@@ -707,7 +707,7 @@ data:
       "time": { "from": "now-7d", "to": "now" },
       "timepicker": {},
       "timezone": "browser",
-      "title": "Torrents dashboard",
+      "title": "Applicative / Torrents dashboard",
       "uid": "feki3juk68hdse",
       "version": 18,
       "weekStart": ""
