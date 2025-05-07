@@ -21,7 +21,10 @@ data:
         "list": [
           {
             "builtIn": 1,
-            "datasource": { "type": "grafana", "uid": "--Grafana--" },
+            "datasource": {
+              "type": "grafana",
+              "uid": "--Grafana--"
+            },
             "enable": true,
             "hide": true,
             "iconColor": "rgba(0,211,255,1)",
@@ -33,36 +36,58 @@ data:
       "editable": true,
       "fiscalYearStartMonth": 0,
       "graphTooltip": 0,
-      "id": 107,
+      "id": 195,
       "links": [],
       "panels": [
         {
           "collapsed": false,
-          "gridPos": { "h": 1, "w": 24, "x": 0, "y": 0 },
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 0
+          },
           "id": 4,
           "panels": [],
           "title": "Cleaner",
           "type": "row"
         },
         {
-          "datasource": { "type": "prometheus", "uid": "prometheus" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "description": "Operationsontorrentexpressedinnumber",
           "fieldConfig": {
             "defaults": {
-              "color": { "mode": "thresholds" },
-              "custom": { "neutral": 0 },
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "neutral": 0
+              },
               "decimals": 0,
               "mappings": [],
               "min": 0,
               "thresholds": {
                 "mode": "absolute",
-                "steps": [{ "color": "green", "value": null }]
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
               },
               "unit": "none"
             },
             "overrides": []
           },
-          "gridPos": { "h": 9, "w": 4, "x": 0, "y": 1 },
+          "gridPos": {
+            "h": 9,
+            "w": 4,
+            "x": 0,
+            "y": 1
+          },
           "id": 5,
           "interval": "1h",
           "options": {
@@ -70,7 +95,9 @@ data:
             "minVizWidth": 75,
             "orientation": "auto",
             "reduceOptions": {
-              "calcs": ["lastNotNull"],
+              "calcs": [
+                "lastNotNull"
+              ],
               "fields": "",
               "values": false
             },
@@ -95,7 +122,10 @@ data:
               "useBackend": false
             },
             {
-              "datasource": { "type": "prometheus", "uid": "prometheus" },
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "disableTextWrap": false,
               "editorMode": "builder",
               "exemplar": false,
@@ -111,7 +141,10 @@ data:
               "useBackend": false
             },
             {
-              "datasource": { "type": "prometheus", "uid": "prometheus" },
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "disableTextWrap": false,
               "editorMode": "code",
               "exemplar": false,
@@ -127,7 +160,10 @@ data:
               "useBackend": false
             },
             {
-              "datasource": { "type": "prometheus", "uid": "prometheus" },
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "disableTextWrap": false,
               "editorMode": "builder",
               "exemplar": false,
@@ -143,7 +179,10 @@ data:
               "useBackend": false
             },
             {
-              "datasource": { "type": "prometheus", "uid": "prometheus" },
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "disableTextWrap": false,
               "editorMode": "builder",
               "exemplar": false,
@@ -163,11 +202,16 @@ data:
           "type": "gauge"
         },
         {
-          "datasource": { "type": "prometheus", "uid": "prometheus" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "description": "Operationsontorrentexpressedinnumber",
           "fieldConfig": {
             "defaults": {
-              "color": { "mode": "palette-classic" },
+              "color": {
+                "mode": "palette-classic"
+              },
               "custom": {
                 "axisBorderShow": false,
                 "axisCenteredZero": false,
@@ -178,10 +222,18 @@ data:
                 "axisSoftMin": 0,
                 "fillOpacity": 80,
                 "gradientMode": "none",
-                "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
                 "lineWidth": 1,
-                "scaleDistribution": { "type": "linear" },
-                "thresholdsStyle": { "mode": "off" }
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
               },
               "decimals": 0,
               "mappings": [],
@@ -189,13 +241,23 @@ data:
               "min": 0,
               "thresholds": {
                 "mode": "absolute",
-                "steps": [{ "color": "green", "value": null }]
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
               },
               "unit": "none"
             },
             "overrides": []
           },
-          "gridPos": { "h": 9, "w": 17, "x": 4, "y": 1 },
+          "gridPos": {
+            "h": 9,
+            "w": 17,
+            "x": 4,
+            "y": 1
+          },
           "id": 7,
           "interval": "1h",
           "options": {
@@ -204,7 +266,10 @@ data:
             "fullHighlight": true,
             "groupWidth": 0.7,
             "legend": {
-              "calcs": ["lastNotNull", "sum"],
+              "calcs": [
+                "lastNotNull",
+                "sum"
+              ],
               "displayMode": "list",
               "placement": "right",
               "showLegend": true
@@ -212,7 +277,11 @@ data:
             "orientation": "auto",
             "showValue": "auto",
             "stacking": "none",
-            "tooltip": { "hideZeros": false, "mode": "single", "sort": "none" },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "single",
+              "sort": "none"
+            },
             "xTickLabelRotation": -15,
             "xTickLabelSpacing": 100
           },
@@ -232,7 +301,10 @@ data:
               "useBackend": false
             },
             {
-              "datasource": { "type": "prometheus", "uid": "prometheus" },
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "disableTextWrap": false,
               "editorMode": "builder",
               "exemplar": false,
@@ -247,7 +319,10 @@ data:
               "useBackend": false
             },
             {
-              "datasource": { "type": "prometheus", "uid": "prometheus" },
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "disableTextWrap": false,
               "editorMode": "builder",
               "exemplar": false,
@@ -262,7 +337,10 @@ data:
               "useBackend": false
             },
             {
-              "datasource": { "type": "prometheus", "uid": "prometheus" },
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "disableTextWrap": false,
               "editorMode": "builder",
               "exemplar": false,
@@ -277,7 +355,10 @@ data:
               "useBackend": false
             },
             {
-              "datasource": { "type": "prometheus", "uid": "prometheus" },
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "disableTextWrap": false,
               "editorMode": "builder",
               "exemplar": false,
@@ -296,29 +377,51 @@ data:
           "type": "barchart"
         },
         {
-          "datasource": { "type": "prometheus", "uid": "prometheus" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "fieldConfig": {
             "defaults": {
-              "color": { "mode": "thresholds" },
+              "color": {
+                "mode": "thresholds"
+              },
               "mappings": [],
               "thresholds": {
                 "mode": "absolute",
                 "steps": [
-                  { "color": "green", "value": null },
-                  { "color": "red", "value": 80 }
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
                 ]
               }
             },
             "overrides": []
           },
-          "gridPos": { "h": 9, "w": 3, "x": 21, "y": 1 },
+          "gridPos": {
+            "h": 9,
+            "w": 3,
+            "x": 21,
+            "y": 1
+          },
           "id": 9,
-          "interval": "15m",
+          "interval": "1h",
           "options": {
             "minVizHeight": 75,
             "minVizWidth": 75,
             "orientation": "auto",
-            "reduceOptions": { "calcs": ["sum"], "fields": "", "values": false },
+            "reduceOptions": {
+              "calcs": [
+                "sum"
+              ],
+              "fields": "",
+              "values": false
+            },
             "showThresholdLabels": false,
             "showThresholdMarkers": true,
             "sizing": "auto"
@@ -334,7 +437,10 @@ data:
               "refId": "A"
             },
             {
-              "datasource": { "type": "prometheus", "uid": "prometheus" },
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "editorMode": "code",
               "exemplar": false,
               "expr": "tor_transclean_cleanup_local_exec_nb",
@@ -346,7 +452,10 @@ data:
               "refId": "B"
             },
             {
-              "datasource": { "type": "prometheus", "uid": "prometheus" },
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "editorMode": "code",
               "expr": "tor_transclean_cleanup_old_exec_nb",
               "hide": false,
@@ -356,7 +465,10 @@ data:
               "refId": "C"
             },
             {
-              "datasource": { "type": "prometheus", "uid": "prometheus" },
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "editorMode": "code",
               "expr": "tor_transclean_cleanup_public_exec_nb",
               "hide": false,
@@ -366,11 +478,16 @@ data:
               "refId": "D"
             },
             {
-              "datasource": { "type": "prometheus", "uid": "prometheus" },
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "editorMode": "code",
+              "exemplar": false,
               "expr": "tor_transclean_resume_exec_nb",
               "hide": false,
               "instant": false,
+              "interval": "",
               "legendFormat": "resume_exec_nb",
               "range": true,
               "refId": "E"
@@ -380,11 +497,16 @@ data:
           "type": "gauge"
         },
         {
-          "datasource": { "type": "prometheus", "uid": "prometheus" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "description": "Showsthevolume(inGbi)oftorrentsmanaged",
           "fieldConfig": {
             "defaults": {
-              "color": { "mode": "palette-classic" },
+              "color": {
+                "mode": "palette-classic"
+              },
               "custom": {
                 "axisBorderShow": false,
                 "axisCenteredZero": false,
@@ -396,40 +518,70 @@ data:
                 "drawStyle": "line",
                 "fillOpacity": 0,
                 "gradientMode": "none",
-                "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
                 "insertNulls": false,
                 "lineInterpolation": "smooth",
-                "lineStyle": { "fill": "solid" },
+                "lineStyle": {
+                  "fill": "solid"
+                },
                 "lineWidth": 1,
                 "pointSize": 5,
-                "scaleDistribution": { "type": "linear" },
+                "scaleDistribution": {
+                  "type": "linear"
+                },
                 "showPoints": "auto",
                 "spanNulls": false,
-                "stacking": { "group": "A", "mode": "none" },
-                "thresholdsStyle": { "mode": "off" }
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
               },
               "decimals": 0,
               "fieldMinMax": false,
               "mappings": [],
               "thresholds": {
                 "mode": "absolute",
-                "steps": [{ "color": "green", "value": null }]
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
               },
               "unit": "bytes"
             },
             "overrides": []
           },
-          "gridPos": { "h": 5, "w": 24, "x": 0, "y": 10 },
+          "gridPos": {
+            "h": 5,
+            "w": 24,
+            "x": 0,
+            "y": 10
+          },
           "id": 11,
           "interval": "1h",
           "options": {
             "legend": {
-              "calcs": ["lastNotNull", "sum"],
+              "calcs": [
+                "lastNotNull",
+                "sum"
+              ],
               "displayMode": "table",
               "placement": "right",
               "showLegend": true
             },
-            "tooltip": { "hideZeros": false, "mode": "single", "sort": "none" }
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "single",
+              "sort": "none"
+            }
           },
           "pluginVersion": "11.5.2",
           "targets": [
@@ -441,7 +593,10 @@ data:
               "refId": "A"
             },
             {
-              "datasource": { "type": "prometheus", "uid": "prometheus" },
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "editorMode": "code",
               "expr": "tor_transclean_cleanup_local_exec_weight",
               "hide": false,
@@ -451,7 +606,10 @@ data:
               "refId": "B"
             },
             {
-              "datasource": { "type": "prometheus", "uid": "prometheus" },
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "editorMode": "code",
               "expr": "tor_transclean_cleanup_old_exec_weight",
               "hide": false,
@@ -461,7 +619,10 @@ data:
               "refId": "C"
             },
             {
-              "datasource": { "type": "prometheus", "uid": "prometheus" },
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "editorMode": "code",
               "expr": "tor_transclean_cleanup_public_exec_weight",
               "hide": false,
@@ -476,31 +637,51 @@ data:
         },
         {
           "collapsed": false,
-          "gridPos": { "h": 1, "w": 24, "x": 0, "y": 15 },
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 15
+          },
           "id": 2,
           "panels": [],
           "title": "Joal",
           "type": "row"
         },
         {
-          "datasource": { "type": "prometheus", "uid": "prometheus" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "description": "LatestoperationbyJoalontorrents",
           "fieldConfig": {
             "defaults": {
-              "color": { "mode": "palette-classic" },
+              "color": {
+                "mode": "palette-classic"
+              },
               "decimals": 0,
               "fieldMinMax": false,
               "mappings": [],
               "min": 0,
               "thresholds": {
                 "mode": "absolute",
-                "steps": [{ "color": "green", "value": null }]
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
               },
               "unit": "none"
             },
             "overrides": []
           },
-          "gridPos": { "h": 9, "w": 4, "x": 0, "y": 16 },
+          "gridPos": {
+            "h": 9,
+            "w": 4,
+            "x": 0,
+            "y": 16
+          },
           "id": 3,
           "interval": "15m",
           "options": {
@@ -508,7 +689,9 @@ data:
             "minVizWidth": 75,
             "orientation": "auto",
             "reduceOptions": {
-              "calcs": ["lastNotNull"],
+              "calcs": [
+                "lastNotNull"
+              ],
               "fields": "",
               "values": false
             },
@@ -519,7 +702,10 @@ data:
           "pluginVersion": "11.5.2",
           "targets": [
             {
-              "datasource": { "type": "prometheus", "uid": "prometheus" },
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "disableTextWrap": false,
               "editorMode": "builder",
               "expr": "tor_joal_process",
@@ -550,7 +736,10 @@ data:
           "type": "gauge"
         },
         {
-          "datasource": { "type": "prometheus", "uid": "prometheus" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "description": "Joal operations on torrents",
           "fieldConfig": {
             "defaults": {
@@ -567,23 +756,41 @@ data:
                 "axisSoftMin": 0,
                 "fillOpacity": 80,
                 "gradientMode": "hue",
-                "hideFrom": { "legend": false, "tooltip": false, "viz": false },
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
                 "lineWidth": 1,
-                "scaleDistribution": { "type": "linear" },
-                "thresholdsStyle": { "mode": "off" }
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
               },
               "decimals": 0,
               "fieldMinMax": false,
               "mappings": [],
               "thresholds": {
                 "mode": "absolute",
-                "steps": [{ "color": "green", "value": null }]
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
               },
               "unit": "none"
             },
             "overrides": []
           },
-          "gridPos": { "h": 9, "w": 17, "x": 4, "y": 16 },
+          "gridPos": {
+            "h": 9,
+            "w": 17,
+            "x": 4,
+            "y": 16
+          },
           "id": 1,
           "interval": "15m",
           "options": {
@@ -592,7 +799,10 @@ data:
             "fullHighlight": true,
             "groupWidth": 0.6,
             "legend": {
-              "calcs": ["last", "sum"],
+              "calcs": [
+                "last",
+                "sum"
+              ],
               "displayMode": "list",
               "placement": "right",
               "showLegend": true
@@ -600,7 +810,11 @@ data:
             "orientation": "auto",
             "showValue": "auto",
             "stacking": "none",
-            "tooltip": { "hideZeros": false, "mode": "single", "sort": "none" },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "single",
+              "sort": "none"
+            },
             "xField": "Time",
             "xTickLabelRotation": 0,
             "xTickLabelSpacing": 100
@@ -608,7 +822,10 @@ data:
           "pluginVersion": "11.5.2",
           "targets": [
             {
-              "datasource": { "type": "prometheus", "uid": "prometheus" },
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "disableTextWrap": false,
               "editorMode": "builder",
               "exemplar": false,
@@ -625,7 +842,10 @@ data:
               "useBackend": false
             },
             {
-              "datasource": { "type": "prometheus", "uid": "prometheus" },
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "disableTextWrap": false,
               "editorMode": "builder",
               "exemplar": false,
@@ -646,30 +866,51 @@ data:
           "type": "barchart"
         },
         {
-          "datasource": { "type": "prometheus", "uid": "prometheus" },
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
           "fieldConfig": {
             "defaults": {
-              "color": { "mode": "thresholds" },
+              "color": {
+                "mode": "thresholds"
+              },
               "mappings": [],
               "thresholds": {
                 "mode": "absolute",
                 "steps": [
-                  { "color": "green", "value": null },
-                  { "color": "red", "value": 80 }
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
                 ]
               }
             },
             "overrides": []
           },
-          "gridPos": { "h": 9, "w": 3, "x": 21, "y": 16 },
+          "gridPos": {
+            "h": 9,
+            "w": 3,
+            "x": 21,
+            "y": 16
+          },
           "id": 10,
-          "interval": "15",
-          "maxDataPoints": 800,
+          "interval": "15m",
           "options": {
             "minVizHeight": 75,
             "minVizWidth": 75,
             "orientation": "auto",
-            "reduceOptions": { "calcs": ["sum"], "fields": "", "values": false },
+            "reduceOptions": {
+              "calcs": [
+                "sum"
+              ],
+              "fields": "",
+              "values": false
+            },
             "showThresholdLabels": false,
             "showThresholdMarkers": true,
             "sizing": "auto"
@@ -685,7 +926,10 @@ data:
               "refId": "A"
             },
             {
-              "datasource": { "type": "prometheus", "uid": "prometheus" },
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
               "editorMode": "code",
               "expr": "tor_joal_cleanup",
               "hide": false,
@@ -703,13 +947,20 @@ data:
       "preload": false,
       "refresh": "",
       "schemaVersion": 40,
-      "tags": ["torrents"],
-      "templating": { "list": [] },
-      "time": { "from": "now-7d", "to": "now" },
+      "tags": [
+        "torrents"
+      ],
+      "templating": {
+        "list": []
+      },
+      "time": {
+        "from": "now-7d",
+        "to": "now"
+      },
       "timepicker": {},
       "timezone": "browser",
       "title": "Torrents dashboard",
       "uid": "feki3juk68hdse",
-      "version": 18,
+      "version": 1,
       "weekStart": ""
     }
