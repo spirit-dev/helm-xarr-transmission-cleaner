@@ -36,7 +36,7 @@ data:
       "editable": true,
       "fiscalYearStartMonth": 0,
       "graphTooltip": 0,
-      "id": 195,
+      "id": 269,
       "links": [],
       "panels": [
         {
@@ -557,7 +557,49 @@ data:
               },
               "unit": "bytes"
             },
-            "overrides": []
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "transmission-downloads"
+                },
+                "properties": [
+                  {
+                    "id": "custom.scaleDistribution",
+                    "value": {
+                      "linearThreshold": 1,
+                      "log": 2,
+                      "type": "log"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "transmission-downloads-capacity"
+                },
+                "properties": [
+                  {
+                    "id": "custom.scaleDistribution",
+                    "value": {
+                      "log": 2,
+                      "type": "log"
+                    }
+                  },
+                  {
+                    "id": "custom.lineStyle",
+                    "value": {
+                      "dash": [
+                        5,
+                        5
+                      ],
+                      "fill": "dash"
+                    }
+                  }
+                ]
+              }
+            ]
           },
           "gridPos": {
             "h": 5,
@@ -565,7 +607,7 @@ data:
             "x": 0,
             "y": 10
           },
-          "id": 11,
+          "id": 12,
           "interval": "1h",
           "options": {
             "legend": {
@@ -630,6 +672,37 @@ data:
               "legendFormat": "cleanup_public_exec_weight",
               "range": true,
               "refId": "D"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "disableTextWrap": false,
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "longhorn_volume_actual_size_bytes{pvc=\"transmission-downloads\", pvc_namespace=\"transmission\"}",
+              "fullMetaSearch": false,
+              "hide": false,
+              "includeNullMetadata": true,
+              "instant": false,
+              "legendFormat": "{{pvc}}",
+              "range": true,
+              "refId": "E",
+              "useBackend": false
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "editorMode": "code",
+              "expr": "longhorn_volume_capacity_bytes{pvc=\"transmission-downloads\", pvc_namespace=\"transmission\"}",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "{{pvc}}-capacity",
+              "range": true,
+              "refId": "F"
             }
           ],
           "title": "Weight of treated torrents",
