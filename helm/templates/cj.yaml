@@ -1,0 +1,56 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ template "transmission-cleaner.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "transmission-cleaner.labels" . | nindent 4 }}
+  {{- with .Values.annotations }}
+  annotations:
+    {{- range $key, $value := . }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}
+  {{- end }}
+spec:
+  schedule: "{{.Values.job.schedule}}"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            {{- include "transmission-cleaner.labels" . | nindent 12 }}
+        spec:
+          volumes:
+            {{- toYaml .Values.volumes | nindent 12 }}
+          securityContext:
+            {{ toYaml .Values.podSecurityContext | indent 10 }}
+          containers:
+            - name: {{ .Chart.Name }}
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              env:
+                {{- toYaml .Values.env | nindent 16 }}
+              securityContext:
+                {{- toYaml .Values.securityContext | nindent 16 }}
+              volumeMounts:
+                {{- toYaml .Values.volumeMounts | nindent 16 }}
+              resources:
+                {{- toYaml .Values.resources | nindent 16 }}
+          imagePullSecrets:
+            - name: {{ template "transmission-cleaner.name" . }}-registry-key
+          restartPolicy: OnFailure
+          {{- if .Values.serviceAccount.create }}
+          serviceAccountName: {{ template "transmission-cleaner.name" . }}-sa
+          {{- end }}
+          {{- with .Values.nodeSelector }}
+          nodeSelector:
+            {{ toYaml . | nindent 8 }}
+          {{- end }}
+          {{- with .Values.affinity }}
+          affinity:
+            {{ toYaml . | nindent 8 }}
+          {{- end }}
+          {{- with .Values.tolerations }}
+          tolerations:
+            {{ toYaml . | nindent 8 }}
+          {{- end }}
