@@ -686,7 +686,7 @@ data:
               "hide": false,
               "includeNullMetadata": true,
               "instant": false,
-              "legendFormat": '{{ "{{pvc}}" }}',
+              "legendFormat": "{{ "{{pvc}}" }}",
               "range": true,
               "refId": "E",
               "useBackend": false
@@ -700,7 +700,7 @@ data:
               "expr": "longhorn_volume_capacity_bytes{pvc=\"transmission-downloads\", pvc_namespace=\"transmission\"}",
               "hide": false,
               "instant": false,
-              "legendFormat": '{{ "{{pvc}}" }}-capacity',
+              "legendFormat": "{{ "{{pvc}}" }}-capacity",
               "range": true,
               "refId": "F"
             }
