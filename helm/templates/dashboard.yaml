@@ -568,7 +568,7 @@ data:
                     "id": "custom.scaleDistribution",
                     "value": {
                       "linearThreshold": 1,
-                      "log": 2,
+                      "log": 10,
                       "type": "log"
                     }
                   }
@@ -583,7 +583,7 @@ data:
                   {
                     "id": "custom.scaleDistribution",
                     "value": {
-                      "log": 2,
+                      "log": 10,
                       "type": "log"
                     }
                   },
