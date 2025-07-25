@@ -69,4 +69,3 @@ app.kubernetes.io/name: {{ include "transmission-cleaner.name" . }}-{{ .name }}
 {{ end -}}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
-
