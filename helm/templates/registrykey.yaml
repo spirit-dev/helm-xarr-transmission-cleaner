@@ -1,9 +1,10 @@
 {{- $ns := .Release.Namespace }}
+{{- $name := include "transmission-cleaner.name" . }}
 {{- with .Values.image.registry }}
 apiVersion: v1
 kind: Secret
 metadata:
-  name: {{ template "transmission-cleaner.name" . }}-registry-key
+  name: {{ $name }}-registry-key
   namespace: {{ $ns }}
 data:
   .dockerconfigjson: {{ printf "{\"auths\":{\"%s\":{\"username\":\"%s\",\"password\":\"%s\"}}}" .url .username .password | b64enc }}
