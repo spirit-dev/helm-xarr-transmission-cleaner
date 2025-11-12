@@ -35,7 +35,7 @@ data:
       },
       "editable": true,
       "fiscalYearStartMonth": 0,
-      "graphTooltip": 1
+      "graphTooltip": 1,
       "id": 269,
       "links": [],
       "panels": [
@@ -681,7 +681,7 @@ data:
               "disableTextWrap": false,
               "editorMode": "code",
               "exemplar": false,
-              "expr": "longhorn_volume_actual_size_bytes{pvc=\"transmission-downloads\", pvc_namespace=\"transmission\"}",
+              "expr": "longhorn_volume_actual_size_bytes{pvc='transmission-downloads', pvc_namespace='transmission'}",
               "fullMetaSearch": false,
               "hide": false,
               "includeNullMetadata": true,
@@ -697,7 +697,7 @@ data:
                 "uid": "prometheus"
               },
               "editorMode": "code",
-              "expr": "longhorn_volume_capacity_bytes{pvc=\"transmission-downloads\", pvc_namespace=\"transmission\"}",
+              "expr": "longhorn_volume_capacity_bytes{pvc='transmission-downloads', pvc_namespace='transmission'}",
               "hide": false,
               "instant": false,
               "legendFormat": "{{ "{{pvc}}" }}-capacity",
