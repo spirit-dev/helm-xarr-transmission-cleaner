@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "transmission-cleaner.fullname" . }}-rules
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "transmission-cleaner.labels" . | nindent 4 }}
+data:
+  rules.yaml: |
+    # Transmission Cleaner - Creator Rules Configuration
+    #
+    # This file defines cleanup rules for torrents based on their creator.
+
+    # Default rules apply when no creator-specific rule matches
+    defaults:
+      seeding_duration: {{ .Values.rules.defaults.seeding_duration }} # Days of seeding before eligible for cleanup
+      ratio_target: {{ .Values.rules.defaults.ratio_target }} # Upload ratio target (uploaded / downloaded)
+      grace_period: {{ .Values.rules.defaults.grace_period }} # Extra days if ratio target not met
+
+    # Creator-specific rules
+    # Each creator rule can override any of the default values.
+    # Unspecified values fall back to defaults.
+    #
+    # Pattern matching:
+    # - Patterns are matched against the torrent creator field (e.g., "YGGTorrent", "Torrent9 Team")
+    # - Patterns are case-insensitive regular expressions
+    # - Use ".*" for catch-all patterns
+
+    creators:
+    {{- range $key, $creator := .Values.rules.creators }}
+      {{ $key }}:
+        pattern: {{ $creator.pattern | quote }}
+        {{- if $creator.seeding_duration }}
+        seeding_duration: {{ $creator.seeding_duration }}
+        {{- end }}
+        {{- if $creator.ratio_target }}
+        ratio_target: {{ $creator.ratio_target }}
+        {{- end }}
+        {{- if $creator.grace_period }}
+        grace_period: {{ $creator.grace_period }}
+        {{- end }}
+    {{- end }}
+
+    # Cleanup Logic:
+    # A torrent is eligible for removal when EITHER:
+    # 1. Ratio target is met AND seeding duration is met
+    # 2. Seeding duration + grace period has passed (regardless of ratio)
+    #
+    # Example with defaults (ratio_target: 1.0, seeding_duration: 42, grace_period: 2):
+    # - Torrent with ratio 1.5, seeding 45 days -> ELIGIBLE (ratio met, duration met)
+    # - Torrent with ratio 0.5, seeding 43 days -> NOT eligible (ratio not met, within grace)
+    # - Torrent with ratio 0.5, seeding 45 days -> ELIGIBLE (grace period expired)
