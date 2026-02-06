@@ -5,8 +5,7 @@ job:
 
 annotations: {}
 
-additionalLabels:
-  {}
+additionalLabels: {}
   # lbl-key: lbl-value
 
 image:
@@ -21,7 +20,7 @@ image:
 env:
   # default mount point
   - name: TC_SOURCE_FOLDER
-    value: /code/source_folder/configs/transmission-home/torrents
+    value: /app/source_folder/configs/transmission-home/torrents
   # Used for logging json format output
   - name: TC_ENVIRONMENT
     value: production
@@ -49,12 +48,6 @@ env:
   # Discord webhook token linked to the channel
   - name: TC_DISCORD_TOKEN
     value:
-  # Max duration for a torrent to remain seeding in tbt ( in days)
-  - name: TC_EXPIRES_AFTER_DAYS
-    value: "42"
-  # Max duration for a public torrent to remain seeding in tbt ( in days)
-  - name: TC_EXPIRES_PUBLIC_AFTER_DAYS
-    value: "3"
 
 volumes:
   - name: source-folder
@@ -63,7 +56,7 @@ volumes:
 
 volumeMounts:
   - name: source-folder
-    mountPath: "/code/source_folder"
+    mountPath: "/app/source_folder"
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -99,3 +92,45 @@ tolerations: []
 affinity: {}
 
 priorityClassName: batch-jobs
+
+# Rules configuration for transmission-cleaner
+rules:
+  # Default rules apply when no creator-specific rule matches
+  defaults:
+    seeding_duration: 40 # Days of seeding before eligible for cleanup
+    ratio_target: 1.0 # Upload ratio target (uploaded / downloaded)
+    grace_period: 2 # Extra days if ratio target not met
+
+  # Creator-specific rules
+  # Each creator rule can override any of the default values.
+  # Unspecified values fall back to defaults.
+  creators:
+    # Example: YGGTorrent - French private tracker
+    ygg:
+      pattern: "ygg"
+      seeding_duration: 10
+      ratio_target: 1.0
+      grace_period: 3
+
+    # Add more creator rules as needed:
+    # torr9:
+    #   pattern: "torr9"
+    #   ratio_target: 1.2
+    #
+    # elite-tracker:
+    #   pattern: "elite-tracker"
+    #   seeding_duration: 60
+    #   ratio_target: 2.0
+    #   grace_period: 7
+    #
+    # casual-creator:
+    #   pattern: "casual"
+    #   seeding_duration: 14
+    #   ratio_target: 0.5
+    #   grace_period: 1
+    #
+    # public:
+    #   pattern: "(public|open)"
+    #   seeding_duration: 3
+    #   ratio_target: 0.0
+    #   grace_period: 0

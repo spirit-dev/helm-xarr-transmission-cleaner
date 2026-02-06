@@ -22,6 +22,9 @@ spec:
         spec:
           volumes:
             {{- toYaml .Values.volumes | nindent 12 }}
+            - name: rules-config
+              configMap:
+                name: {{ template "transmission-cleaner.fullname" . }}-rules
           securityContext:
             {{ toYaml .Values.podSecurityContext | indent 10 }}
           containers:
@@ -30,10 +33,15 @@ spec:
               imagePullPolicy: {{ .Values.image.pullPolicy }}
               env:
                 {{- toYaml .Values.env | nindent 16 }}
+                - name: TC_RULES_FILE
+                  value: /app/config/rules.yaml
               securityContext:
                 {{- toYaml .Values.securityContext | nindent 16 }}
               volumeMounts:
                 {{- toYaml .Values.volumeMounts | nindent 16 }}
+                - name: rules-config
+                  mountPath: /app/config/rules.yaml
+                  subPath: rules.yaml
               resources:
                 {{- toYaml .Values.resources | nindent 16 }}
           imagePullSecrets:
